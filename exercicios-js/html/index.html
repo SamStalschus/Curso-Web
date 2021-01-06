@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>Exercicios HTML</h1>
+</head>
+<body>
+    <header>
+        Exercícios HTML
+    </header>
+    <nav>
+        <a href="exercicios/teste.html"> 00 - Teste</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+        Curso desenvolvimento web
+    </footer>
+    <script>
+        // interceptar o click do link e chamar apenas o texto html e substitui o conteudo pelo conteudo da section conteudo
+        document.querySelectorAll('a').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault() // previni que o comportamento padrão que é a navegação ocorra
+                fetch(link.href) // fetch é baseado em promise e com ele conseguimos fazer uma req ajax
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>
