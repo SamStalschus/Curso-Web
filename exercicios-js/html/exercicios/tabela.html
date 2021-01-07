@@ -1,0 +1,52 @@
+<table>
+    <caption>Produtos</caption>
+    <thead>
+        <tr><!--linha table roll-->
+            <th>Produto</th> <!--Modulo table head-->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>iPad</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>16445,00</td>
+        </tr>
+        <tr>
+            <td>Samsung S9</td>
+            <td>2000,00</td>
+            <td>8</td>
+            <td>16000,00</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td> <!--colspan(horizontal) rollspan(vertical) para uma coluna ocupar mais espaço do que ela ocuparia-->
+            <td>32445,00</td>
+        </tr>
+    </tfoot>
+</table>
+<!--temos três grandes regioes na tabela, cabeçalho, corpo e footer-->
+
+<style>
+    table{
+        border-collapse: collapse ; /*para não ter bordar*/
+    }
+    th, td {
+        padding: 10px;
+    }
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+    tbody tr:hover {
+        background-color: #dedede;
+    }
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
