@@ -1,0 +1,109 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+        alt="Muro da cidade"
+        width="513" height="342" 
+        title="Muro da cidade por Tarso Bessa"> <!--aparece quando coloca o mouse em cima-->
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        alt="Intro Cod3r" height="342">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342">
+    </p><!--png permite transparência no formato da imagem-->
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+         alt="Avatar" height="50" align="left">
+         Texto sasjasn js hakjshakj sjaha kjshdkackans kas sajdna kdjnsa
+         dsj andkjasnd     nmnjsankj sannsjkansj shajuns ka nsjkan ska njska
+         ska smjaksmn  jsakn kjan Texto sasjasn js hakjshakj sjaha kjshdkackans
+         dsj andkjasnd     nmnjsankj sannsjkansj shajuns ka nsjkan ska njska
+         Texto sasjasn js hakjshakj sjaha kjshdkackans kas sajdna kdjnsa
+         dsj andkjasnd     nmnjsankj sannsjkansj shajuns ka nsjkan ska njska
+    </p>
+    
+    <p class="cidade"></p>
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.jpg"
+                media="min-width: 600px">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.jpg" alt="Logo" >
+        </picture>
+    </p>
+    
+</div>
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+    .texto {
+        width: 400px;
+    }
+    .texto img {
+        margin-right: 10px;
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg") ;
+        background-position: center ;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback()
+        }
+    }
+
+    // const p = document.querySelector('[wm-slider] > p')
+    // p.style.display = 'block'
+    // mover(p, 1500, -400, 5, () => {
+    //     console.log('Terminouu!!!')
+    // })
+
+    function slider() {
+        const elementos =document.querySelectorAll('[wm-slider] > p') // queryselectorall retorna um node list
+        const slides = Array.from(elementos) // transforma a node list em um Array de slides
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+
+        const inicio = innerWidth // innerwidht retorna a largura da pagina 
+        const fim = -slide.clientWidth // clientWidth = largura da tag p
+        
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider()
+</script>
+
