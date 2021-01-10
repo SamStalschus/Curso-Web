@@ -6,7 +6,62 @@
     <title>CSS Selectors</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        /* * {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor universal*/
+        /* .tag {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor de classe*/
+        /* #aprovados {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor de ID */
+        /* #aninhado > div {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor aninhado */
+                /* #aninhado section {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor descendente(qualquer descendente section de aninhado será selecionado) */
+        /* p + ul {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor adjacente*/
+        /* p ~ ol {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor de irmãos*/
+        /* [feira] {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor procura por elementos com atributo feira*/
+        /* [feira=casa] {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor procura por elementos com atributo feira com valor casa*/
+        /* [feira~=casa] {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor procura por elementos com atributo feira que tenham algo de casa no seu atributo*/
+        /* span:nth-child(1) {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor que envolve filho (Me dê algum span que seja filho de alguém)*/
+        /* section > :nth-child(even) {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor filhos impares (dentro de uma section me de todos os filhos impares)*/
+        /* section > :nth-child(even), ul {
+            color: #ff0;
+            background-color: #f77;
+        } -> Seletor filhos impares aplica o mesmo padrão para ul (dentro de uma section me de todos os filhos impares)*/
+        section > span:nth-of-type(2) {
+            color: #ff0;
+            background-color: #f77;
+        } /*pega segundo elemento do tipó span*/
     </style>
 </head>
 
