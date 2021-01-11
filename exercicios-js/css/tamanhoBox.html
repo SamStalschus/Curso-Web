@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <title>Tamanho Box</title>
     <style>
+         * { /*seletor universal aplica isso para todo o código */
+            box-sizing: border-box;
+        }
         body {
             font-size: 45px;
+            margin: 0;
+        }
+        div {
+            background-color: deepskyblue;
+             width: 100%; /*Aqui de fato o conteúdo é 100%, mas com o padding e a borda fica bem maior extrapolando o tamanho da página */
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+            /* box-sizing: content-box; */
+            /* box-sizing: border-box; o tamanho total é considerando a borda e o padding */
         }
     </style>
 </head>
