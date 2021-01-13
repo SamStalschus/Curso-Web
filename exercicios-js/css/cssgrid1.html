@@ -22,6 +22,37 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+        body {
+            display: grid;
+            grid-template-columns: 50% 50%;/*define a organização das colunas, após isso passa a ter duas colunas*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);/*repete 4 vezes os valores passados como parâmetros*/
+            grid-template-columns: repeat(12, 8.33%);
+            grid-template-columns: repeat(11, 100px) 100px; /*mexeu nas 12, pois foi colocada uma pra fora apenas para exemplo*/
+            grid-template-columns: 200px 20% 1fr;/*a terceira coluna pega todo o resto que sobrou do tamanho das outras duas*/
+            grid-template-columns: 3fr 6fr 3fr;/*quebra em 12 fragmentos e divide entre 3 colunas*/
+            grid-template-rows: 50% 20% 12.5% 12.5%;
+            grid-template-rows:100px 1fr;/*a 3 e 4 linhas que não foram informadas ficam no tamanho necessário para a renderização*/
+            grid-template-rows:100px  auto auto auto;/*auto organiza de forma automática*/
+        }
+        .d8 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-column-end: span 2; /*comece na casa 2 e de um span de duas casa apenas uma forma diferente*/
+            grid-row-end: 5; /*ele já começa na linha 4 mas agr finaliza na 5*/
+            grid-row-end: span 2;
+        }
+        .d10,
+        .d11 {
+            /*podem se sobrepor*/
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: span 1; /*com isso temos a sobreposição do 10 e do 11*/
+        }
+        .d10 {
+            /*z-index -> profundidade dos elementos "quem fica na frente de quem?" em casos de sobreposição*/
+            z-index: 1;
+        }
     </style>
 </head>
 

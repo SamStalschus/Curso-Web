@@ -6,7 +6,36 @@
     <title>Flexbox #02</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+        .flex-container div:nth-child(3) { /*aplica no terceiro filho*/
+            background-color: indianred;
+            order: 1; /*manipular a ordem dos flex itens que estão dentro do flex box quem possui ordem maior é definido por uiltimo*/
+            order: 0;
+            order: -1;/*passa a ser o primeiro*/
+            align-self: center; /*alinha determinado elemento que vc estehja mencionando no momento*/
+            align-self:flex-end;
+            align-self:flex-start;
+            align-self: stretch; 
+        }
+        .flex-container div {
+            width: 100px;
+            flex-grow: 0;
+            flex-grow: 1;
+        }      
+        .flex-container div:nth-child(1) { /*pega o primeiro elemento como foi definido na div e não como está visualmente*/
+            flex-grow: 2;
+        }
+        .flex-container {
+            width: 300px;
+            flex-shrink: 1;/*encolhe todo os elementos de forma equivalente*/
+        }
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5;
+        }
     </style>
 </head>
 
