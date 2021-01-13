@@ -22,7 +22,36 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        // ... 
+        // função pra facilitar o console.log e vermos o conceito de prototype
+        function log() {
+            console.log(this)
+        }
+        // adicionando a função log em seu prototype
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // a partir de um determinado elemento eu consigo facilmente pegar o seu elemento pai
+        lista.childNodes.log() // efeito colateral de texto li texto... por causa dos espaços no html
+        // forma de pegar o primeiro elemento
+        const primeiro = lista.firstChild
+        primeiro.log()
+        primeiro.nextSibling.log()
+        // forma de pegar o ultimo elemento
+        const ultimo = lista.lastChild
+        ultimo.log()
+        ultimo.previousSibling.log()
+        // traz os elementos
+        lista.children.log()
+        lista.firstElementChild.log()
+        lista.lastElementChild.log()
+        lista.parentNode.previousElementSibling.log()
+        lista.parentNode.nextElementSibling.log()
+
+        document.querySelectorAll('div ul li').log() // forma mais adequada de fazer isso tudo acima
     </script>
 </body>
 

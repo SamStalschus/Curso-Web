@@ -45,7 +45,27 @@
     </div>
     <div class="direita" wm-dropzone></div>
     <script>
-        // ...
+        // ... jogar um evento de um local para outro dragen drop
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item, index) => {
+            item.draggable = true // propriedade para dizer que o item é arrastável
+            item.id = item.id || `draggable-item-${index}`
+            item.ondragstart = e => {
+                e.dataTransfer.setData('item-id', e.target.id) //seta o id do intem para pegar no momento que terminar o evento
+            }
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone')
+        dropzones.forEach(dropzones => {
+            dropzones.ondragover = e => e.preventDefault()
+            dropzones.ondrop = function(e) {
+                const id = e.dataTransfer.getData('item-id')
+                const item = document.getElementById(id)
+                // e.target.appendChild(item) faz colocar elemento dentro do outro
+                dropzones.appendChild(item)
+            }
+        })
+        // primeiro pega o id do elemento que está sendo arrastado e depois monitora ele até soltar em outro lugar, o que transfere ele para outra div
     </script>
 </body>
 

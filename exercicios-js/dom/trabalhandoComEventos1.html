@@ -9,9 +9,26 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <!-- onclick="navegarEm5s(event)" o onclick está ligado a uma função javascript-->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        // ... interceptar o click
+        function navegarEm5s (e) {
+            e.preventDefault() // previne o evento para não ser executado
+            console.log('Saindo em 5s..')
+            setTimeout(() => {
+                const link = e.target // target -> element html que disparou o evento
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // outra abordagem não é tão interessante pois não fica claro lendo no html
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+        
+        // outra abordagem, a mais explícita e melhor
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s // se tem um atributo personalizado, pressupõe-se que esse atributo vai ser usado no JS 
     </script>
 </body>

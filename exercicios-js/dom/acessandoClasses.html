@@ -12,7 +12,28 @@
         Classes
     </div>
     <script>
-        // ...
+        // ... Class List
+        const classes = document.querySelector('div').classList
+        classes.add('destaque')
+        classes.remove('destaque')
+        classes.toggle('destaque')
+        console.log(classes.contains('destaque'))
+
+        console.log(classes.lenght)
+        classes.toggle('destaque') // toggle remove se tiver e adiciona se não tiver
+        console.log(classes.length)
+        
+        classes.add('Destaque1')
+        classes.add('Destaque2')
+        console.log(classes.length)
+
+        for(let e of classes) {
+            console.log(e) // possui iterator associado por isso podemos fazer um laço for
+        }
+        
+        classes.forEach(element => {
+            console.log(element)
+        })
     </script>
 </body>
 
