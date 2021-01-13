@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        // ... como selecionar elementos a partir da DOM
+        document.getElementById('primeiro').classList.add('destaque') //nesse caso não precisa do cerquilha para o id
+
+        const divs = document.getElementsByTagName('div') // recebe um HTML Collection
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))//pego todos os elementos divs, transformo em um Array e faço um forEach removendo a classe destaque transforma HTML Collection em Array
+
+        //outra forma de transformar um HTML collections em array é usando o spreading
+        const divsArray = [...divs]
+        divsArray.forEach(e => classList.add('destaque'))
+
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        for(let e of ultimosElementos) { // iterator sobre os htmls collectios recebidos
+            e.classList.add('remove')
+        }
+    </script>
+</body>
+</html>

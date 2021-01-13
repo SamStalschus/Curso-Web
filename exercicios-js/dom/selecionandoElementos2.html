@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        // ... QuerySelector e QuerySelectorAll -> retora um NodeList e não um HTML Collection
+        document.querySelector('#primeiro') // o querySelector espera um seletor CSS por isso utilizar o # para mostrar que é um id
+            .classList.add('destaque')
+        
+        const selecionar = seletor => { // função para adcionar
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        }
+        const deselecionar = seletor => { // função para remover
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        }
+        // passando seletores diferentes para o queryselectorall que retorna um nodelist e por isso possui forEach
+        selecionar('div')
+        deselecionar('*')
+        selecionar('.terceiro.ultimo') // não importa a ordem das classes
+        deselecionar('*')
+        selecionar(':not(#primeiro)') // seleciona todos menos o primeiro
+        deselecionar('*')
+        selecionar(':nth-child(1)') // todos os primeiros filhos
+        deselecionar('*')
+        selecionar('div:nth-of-type(1') // pega o primeiro elemento do tipo Div
+        deselecionar('*')
+        selecionar('[wb-attrib]') // selecionando a partir de um atributo
+        // transformar o queryselector em Array -> Array.from ou [...Array]
+    </script>
+</body>
+</html>
