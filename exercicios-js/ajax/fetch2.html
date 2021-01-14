@@ -30,5 +30,35 @@
     <div id="resultado"></div>
     <script>
         // ...
+        document.usuarioForm.onsubmit = async = e => {
+            e.preventDefault() // parar o comportamento padrão da submissão
+
+            const form = e.target // elemento que disparou o evento
+            const data = new FormData(form) // pega todos os dados preenchudos no formulário e joga nesse objeto
+            data.append('ajax', true)
+
+            const options = {
+                method: form.method,
+                body: new URLSearchParams(data) // dados do formulário para que ele possa ir na submissão
+            }
+            const resultado = document.getElementById('resultado')
+
+            // fetch(form.action, options) // form.actio = url
+            //     .then(resp => resp.json())
+            //     .then(json => {
+            //         resultado.innerHTML = JSON.stringify(json)
+            //     })
+            //     .catch(e => {
+            //         resultado.innerHTML = e
+            //     })
+
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch(e) {
+                resultado.innerHTML = e
+            }
+        }
     </script>
 </body>

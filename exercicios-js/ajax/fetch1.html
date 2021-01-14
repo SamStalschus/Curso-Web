@@ -11,6 +11,15 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        // ... requisição fetch do tipo get
+        const url = 'dados/estados.json'
+        fetch(url)// retorna uma promisse
+            .then(resp => resp.json())
+            .then(estados => {
+                const itens = estados.reduce(
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
     </script>
 </body>

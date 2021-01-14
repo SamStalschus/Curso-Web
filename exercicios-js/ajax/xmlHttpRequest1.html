@@ -11,6 +11,63 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        // ... forma mais antiga, um pouco mais manual
+        function ajax(config) {
+            const xhr = new XMLHttpRequest() // objeto padrozinado no JS
+            xhr.open(config.metodo, config.url, true) // req do tipo get, vai pegar a url do config passado e true significa que vai ser assyncrona
+
+            xhr.onload = e => { // quando termina os dados chama erro ou acerto
+                if (xhr.status === 200) { // toda a linha 200 de status http são status de sucesso
+                    config.sucesso(xhr.response)
+                }else if (xhr.status >= 400) { // erro do cliente ou do servidor entre 400 e 500
+                    config.erro({
+                        code: xhr.status,
+                        text: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.send()
+        }
+
+        function criarTabela(estados) {
+            const linhas = estados.map(estado => {
+                    const tdId = document.createElement('td')
+                    tdId.innerHTML = estado.id
+
+                    const tdNome = document.createElement('td')
+                    tdNome.innerHTML = estado.nome
+
+                    const tdSigla = document.createElement('td')
+                    tdSigla.innerHTML = estado.sigla
+
+                    const tr = document.createElement('tr')
+
+                    tr.appendChild(tdId)
+                    tr.appendChild(tdNome)
+                    tr.appendChild(tdSigla)
+
+                    return tr
+                })
+
+                const tabela = document.createElement('table')
+                linhas.forEach(linha => tabela.appendChild(linha))
+                document.body.appendChild(tabela)
+        }
+
+        // chamar a function
+        ajax({
+            url: "dados/estados.json",
+            metodo: "get",
+            sucesso(response) {
+                const estados = JSON.parse(response)
+
+                criarTabela(estados)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.code}: ${e.text}`)
+                document.body.appendChild(msg)
+            }
+        })
     </script>
 </body>
