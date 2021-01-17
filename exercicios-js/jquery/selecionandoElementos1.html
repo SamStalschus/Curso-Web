@@ -49,6 +49,27 @@
     </form>
 
     <script>
-        // ...
+        // ... aplicando seleções sobre os elementos que temos Seletores x Filtros
+        $('#feira')/*pegando um elemento a partir do id*/.addClass('destaque').removeClass('destaque')
+        $('li').addClass('destaque')
+        $('[wm-obrigatorio]').removeClass('destaque')
+        $('li.opcional').removeClass('destaque')
+        $('div p span').addClass('destaque')
+
+        // filtros exclusivos do próprio jQuery
+        $('li:first').css('border', 'solid 3px yellow') // do tipo li, pega o primeiro
+        $('li:odd').css('border', 'solid 10px orange') // todos os ímpares
+        $('li:gt(1)').css('border', 'solid 10px white') // [0], [1], aplica os efeitos após o [1]elemento
+        $('li:not:last').css('border', 'none')// tira a borda de todos menos do último
+        $('li:contains("r")').css('background-color', 'black') // pega os que contém a letra 'r'
+
+        // alguns filtros para trabalhar com formulários
+        $('form *').hide()
+        $('form :text').show()
+        $('form :password').show()
+        $('form :checkbox').show()
+        $('form :radio').show()
+        $('form :file').show()
+
     </script>
 </body>

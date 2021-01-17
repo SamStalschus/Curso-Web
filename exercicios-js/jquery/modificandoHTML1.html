@@ -15,6 +15,27 @@
     <div id='conteudo3'></div>
 
     <script>
-        // ...
+        // ...Conteúdo 1
+        $('#conteudo1').append('<p>1</p>')
+
+        // Conteúdo 2
+        const elementos = [
+            $('<li></li>').append('Arroz'),
+            $('<li>').append('Feijão'),
+            $('<li>').append('Carne')
+        ]
+
+        const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos) // prepend apenda antes dos elementos que já estavam dentro
+        $('#conteudo2').append(lista)
+
+        // Conteúdo 3
+        $('#conteudo3').append('<h1>1</h1>', '<h1>2</h1>' ) // pode ser asssim ou com array
+                .prepend('<h1>0</h1>')
+        $('#conteudo3').html('<h1>0</h1>') // substitui o conteúdo por esse
+        $('#conteudo3').text('<h1>10</h1>')
+
+        // alterando todos
+        $('div[id]').html('<strong>Todos!<strong>') // só seleciona divs que tenham o atributo 'id'
+        
     </script>
 </body>

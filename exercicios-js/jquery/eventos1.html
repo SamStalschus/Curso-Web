@@ -21,5 +21,40 @@
 
     <script>
         // ...
+
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // quando acontecer o evento mousemove chama a function
+        $('body').on('mousemove', mostrarPosicaoMouse) //1 param -> nome do evento 2 param -> funcção
+
+
+        // desregistrar o click do mouse quando ele atingir a div posição
+        $('#posicao').mouseover(e => {
+            // tomar sempre cuidado quando for manipualar o this
+            $('body').off('mousemove', mostrarPosicaoMouse)
+        })
+        // voltar a registrar o click do mouse quando sair de cima
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoMouse)
+        })
+
+        let cliques = 0
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+
+        const backgroundOriginal = $('body').css('background-color')
+
+        // keyup ou keydown(delay) keypress(delay)
+        $('input').keyup(function (e) {
+            const valor = $(this).val()
+            if (valor.match(/#[\da-fA-F]{3,6}/)){ //verificar se da match de a minusculo e maiusculo até f minustulo e maiusculo podendo ocorrer de 3 a 6 vezes
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
     </script>
 </body>

@@ -81,6 +81,29 @@
         <p>Cod3r Ensino</p>
     </footer>
     <script>
-        // ...
+        // ... usando funções parent, children
+        const comBorda = { 'border': 'solid 8px orange'}
+        const semBorda = { 'border': 'none'}
+
+        $('a[href="#link3"').parent().css(comBorda).css(semBorda) // parent volta uma casa na hierarquia de pais
+
+        $('li:last').prev().css(comBorda).css(semBorda) // pega o last e o prev volta para o anterior
+        $('a[href="#link3"]').parent().next().css(comBorda) // pega o parent que é o li, e pega o next que é o próximo
+
+        // parents pega todos os links na hierarquia de pais
+        $('a[href="#link1"]').parents().css(comBorda).css(semBorda)
+        $('a[href="#link1"]').parentsUntil($('body').css(comBorda).css(semBorda)) // vai subindo na escala de pais até body, mas sem selecionar o body
+        
+        $('main').children().css(comBorda).css(semBorda)
+
+        $('body').find('a').css(comBorda).css(semBorda) // procura todos os elementos dentro de todos os filhos 
+
+        const elementoDOM = document.getElementsByClassName('menu')
+        $(elementoDOM).css(comBorda).css(semBorda)
+
+        $('main').children().each((indice, elementoDom) => $(elementoDom).css(comBorda).css(semBorda))
+        $('li').each((indice, elementoDOM) => {
+            $(elementoDOM).css(comBorda).css(semBorda)
+        })
     </script>
 </body>
