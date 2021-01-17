@@ -24,5 +24,16 @@
 
     <script>        
         // ...
+        $('button').click(e => {
+            // abaixo várias animações diferentes
+            const t = 500 // tempo
+            // $('#animar').hide(t).show(t)
+            $('#animar').toggle(t).toggle(t)
+            // $('#animar').fadeOut(t).fadeIn(t)
+            $('#animar').fadeToggle(t).fadeToggle(t)
+            // $('#animar').slideUp(t).slideDown(t)
+            $('#animar').slideToggle(t).slideToggle(t)
+            
+        })
     </script>
 </body>
