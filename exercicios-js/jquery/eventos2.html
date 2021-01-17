@@ -22,5 +22,27 @@
     <div id="resultado2">?</div>
     <script>
         // ...
+
+        const alternarDestaque =() => $('#div1').toggleClass('destaque')
+        // duas formas semelhantes
+        $('#div1').on('mouseenter mouseleave', alternarDestaque)
+        // $('#div1').hover(alternarDestaque, e => {}) // de um lado faz uma coisa quando entra e do outro faz outra coisa quando sai
+
+        $('#div1').one('mouseenter', e => alert('Aviso Importante')) // chamado uma única vez por conta do one
+        $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000)) // dois clicks some e volta
+        
+        // evento para sempre que a tela for redimensionada
+        $(window).resize(function(e) {
+            const l = $(window).width()
+            const a = $(window).height()
+            $('#resultado1').html(`Largura: ${l} e altura: ${a}`)
+        })
+
+        // pega o trecho selecionado do único input que tem na tela
+        $(':input').select(e => { // quando acontecer um select ele vai pegar
+            const inicio = e.target.selectionStart
+            const fim = e.target.selectionEnd
+            $('#resultado2').html(e.target.value.substring(inicio, fim))
+        })
     </script>
 </body>
